@@ -21,5 +21,7 @@ jobs:
           script: |
             cd /var/www/Portfolio/
             git fetch origin
+            git reset --hard origin/prod
             git checkout prod
             git pull origin prod
+            
