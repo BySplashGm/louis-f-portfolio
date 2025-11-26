@@ -1,0 +1,30 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [ "prod" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to VPS via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /var/www/mon-projet
+            git fetch origin
+            git checkout prod
+            git pull origin prod
+            
+            composer install --no-dev --optimize-autoloader
+            php bin/console cache:clear --env=prod
+            php bin/console cache:warmup --env=prod
+            systemctl restart php8.2-fpm
