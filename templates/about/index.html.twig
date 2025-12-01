@@ -1,0 +1,20 @@
+{% extends 'base/base.html.twig' %}
+{% use 'base/header.html.twig' %}
+
+{% block title %}Louis - A Propos{% endblock %}
+{% block body %}
+<div class="bg-gris mt-10 mb-10 ml-50 mr-50 pt-10 rounded-xl">
+    <div class="flex pl-10">
+        <h1 class="text-2xl capitalize font-bold text-4xl">à propos</h1>
+    </div>
+    <div class="flex flex-row justify-center align-center p-10">
+        <img class="rounded-full w-3xs border-2" src="{{ asset('images/pp.png') }}"  alt="image de profil de Louis Fremeaux " style="width:200px; height:200px;">
+        <p class="content-center p-5">Louis Fremeaux, étudiant en 2ᵉ année de BTS SIO (Services Informatiques aux Organisations). Curieux et passionné par l’informatique et les technologies, j’aime développer, apprendre et créer des projets qui me permettent de progresser et de relever de nouveaux défis.
+            <br> <a class="text-blue-400" href="{{ asset('cv/louis_fremeaux.pdf') }}" target="_blank">cv téléchargeable</a>
+        </p>
+
+    </div>
+</div>
+{% endblock %}
+
+{% use 'base/footer.html.twig' %}
