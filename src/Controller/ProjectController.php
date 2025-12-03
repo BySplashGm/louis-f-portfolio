@@ -13,7 +13,7 @@ final class ProjectController extends AbstractController
     {
         return $this->render('project/index.html.twig', [
             'controller_name' => 'ProjectController',
-            //'projects'=>$projects
+            // 'projects'=>$projects
         ]);
     }
 }
